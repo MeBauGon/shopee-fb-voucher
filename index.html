@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Mẹ Bầu Gọn - Đổi link áp mã Shopee</title>
+  <meta name="description" content="Dán link sản phẩm Shopee để chuyển đổi sang link mua hàng tiếp thị liên kết." />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #18191b;
+      color: #f4f4f4;
+    }
+
+    .topbar {
+      width: 100%;
+      padding: 22px 16px;
+      text-align: center;
+      background: #111214;
+      border-bottom: 1px solid #24262a;
+    }
+
+    .topbar h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #ff7a1a;
+      letter-spacing: 0.3px;
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 34px 16px 60px;
+    }
+
+    .box {
+      background: #1d1f22;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+      border: 1px solid #282b30;
+    }
+
+    .input-row {
+      display: flex;
+      background: #191b1e;
+      border: 1px solid #292c31;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 72px;
+      resize: vertical;
+      border: none;
+      outline: none;
+      padding: 18px;
+      background: #191b1e;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    textarea::placeholder {
+      color: #858585;
+    }
+
+    .paste-btn {
+      width: 64px;
+      border: none;
+      background: #202328;
+      color: #bfbfbf;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .main-btn {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 18px 20px;
+      background: linear-gradient(90deg, #ff7a00, #d94600);
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .main-btn:hover {
+      filter: brightness(1.08);
+    }
+
+    .message {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .error {
+      color: #ff6b6b;
+    }
+
+    .success {
+      color: #88e088;
+    }
+
+    .result-card {
+      display: none;
+      margin-top: 32px;
+      background: #1d1f22;
+      border-radius: 22px;
+      padding: 24px;
+      border-top: 4px solid #df5b00;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    }
+
+    .product {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .product-img {
+      width: 96px;
+      height: 96px;
+      border-radius: 12px;
+      background: #2b2e34;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      flex-shrink: 0;
+      overflow: hidden;
+      font-weight: bold;
+    }
+
+    .product-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #e8e8e8;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #234c2c;
+      color: #a9f5b2;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .buy-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 18px;
+      border-radius: 14px;
+      padding: 18px 20px;
+      background: linear-gradient(90deg, #ff7a00, #d94600);
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .copy-btn {
+      width: 100%;
+      margin-top: 12px;
+      border: 1px solid #3a3d43;
+      border-radius: 14px;
+      padding: 15px 18px;
+      background: #202328;
+      color: #f4f4f4;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .guide {
+      margin-top: 28px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      background: #1d1f22;
+      border: 1px solid #282b30;
+      border-radius: 16px;
+      padding: 16px;
+      color: #d7d7d7;
+      line-height: 1.55;
+    }
+
+    .step strong {
+      color: #ff7a1a;
+    }
+
+    .note {
+      margin-top: 24px;
+      background: #2a2417;
+      border: 1px solid #5d481f;
+      color: #f6d68a;
+      padding: 16px;
+      border-radius: 16px;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #888;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 520px) {
+      .topbar h1 {
+        font-size: 20px;
+      }
+
+      .box {
+        padding: 20px;
+      }
+
+      .product {
+        align-items: flex-start;
+      }
+
+      .product-img {
+        width: 78px;
+        height: 78px;
+      }
+
+      .product-title {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <h1>🛍️ MẸ BẦU GỌN - ĐỔI LINK ÁP MÃ SHOPEE</h1>
+  </header>
+
+  <main class="wrap">
+    <section class="box">
+      <div class="input-row">
+        <textarea id="productUrl" placeholder="Dán link sản phẩm Shopee vào đây..."></textarea>
+        <button class="paste-btn" onclick="pasteFromClipboard()" title="Dán link">⧉</button>
+      </div>
+
+      <button class="main-btn" onclick="convertLink()">Chuyển đổi ngay</button>
+
+      <div id="message" class="message"></div>
+    </section>
+
+    <section id="resultCard" class="result-card">
+      <div class="product">
+        <div class="product-img">SP</div>
+
+        <div>
+          <div id="productTitle" class="product-title">
+            Link sản phẩm Shopee đã được chuyển đổi
+          </div>
+          <div class="status">✓ Đã chuyển đổi xong</div>
+        </div>
+      </div>
+
+      <a id="buyNow" class="buy-btn" href="#" target="_blank" rel="noopener noreferrer">
+        Mua ngay
+      </a>
+
+      <button class="copy-btn" onclick="copyConvertedLink()">
+        Sao chép link đã chuyển đổi
+      </button>
+    </section>
+
+    <section class="guide">
+      <div class="step">
+        <strong>Bước 1:</strong> Mở Shopee và sao chép link sản phẩm bạn muốn mua.
+      </div>
+      <div class="step">
+        <strong>Bước 2:</strong> Dán link vào ô phía trên.
+      </div>
+      <div class="step">
+        <strong>Bước 3:</strong> Bấm “Chuyển đổi ngay”.
+      </div>
+      <div class="step">
+        <strong>Bước 4:</strong> Bấm “Mua ngay” để mở Shopee và kiểm tra voucher nếu sản phẩm/tài khoản đủ điều kiện.
+      </div>
+    </section>
+
+    <div class="note">
+      Lưu ý: Trang này không cam kết mã/voucher luôn áp dụng thành công. Ưu đãi phụ thuộc vào thời điểm, tài khoản, sản phẩm, ngành hàng và điều kiện của Shopee.
+    </div>
+
+    <div class="footer">
+      Trang tiếp thị liên kết độc lập. Không phải trang chính thức của Shopee.
+    </div>
+  </main>
+
+  <script>
+    const AFFILIATE_ID = "17399750365";
+    const SUB_ID_PREFIX = "mebaugon-fb22";
+
+    let convertedLink = "";
+
+    const allowedHosts = [
+      "shopee.vn",
+      "www.shopee.vn",
+      "s.shopee.vn",
+      "vn.shp.ee"
+    ];
+
+    function setMessage(text, type) {
+      const box = document.getElementById("message");
+      box.textContent = text;
+      box.className = "message " + type;
+    }
+
+    function normalizeInput(raw) {
+      if (!raw) return "";
+
+      const text = raw.trim();
+
+      const match = text.match(/https?:\/\/[^\s]+/i);
+      return match ? match[0] : text;
+    }
+
+    function isValidShopeeUrl(rawUrl) {
+      try {
+        const url = new URL(rawUrl);
+
+        if (url.protocol !== "https:" && url.protocol !== "http:") {
+          return false;
+        }
+
+        return allowedHosts.includes(url.hostname);
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function createSubId() {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, "0");
+      const dd = String(now.getDate()).padStart(2, "0");
+      const random = Math.random().toString(36).slice(2, 8);
+
+      return `${SUB_ID_PREFIX}-${yyyy}${mm}${dd}-${random}`;
+    }
+
+    function createShopeeAffiliateLink(originalUrl) {
+      const encodedUrl = encodeURIComponent(originalUrl);
+      const subId = encodeURIComponent(createSubId());
+
+      return `https://s.shopee.vn/an_redir?origin_link=${encodedUrl}&affiliate_id=${AFFILIATE_ID}&sub_id=${subId}`;
+    }
+
+    function extractSimpleTitle(url) {
+      try {
+        const decoded = decodeURIComponent(url);
+        const parts = decoded.split("/");
+        const lastPart = parts[parts.length - 1] || "Sản phẩm Shopee";
+
+        return lastPart
+          .replace(/-i\.\d+\.\d+.*/g, "")
+          .replace(/[-_]+/g, " ")
+          .trim()
+          .slice(0, 120) || "Sản phẩm Shopee đã được chuyển đổi";
+      } catch {
+        return "Sản phẩm Shopee đã được chuyển đổi";
+      }
+    }
+
+    function convertLink() {
+      const input = document.getElementById("productUrl");
+      const resultCard = document.getElementById("resultCard");
+      const buyNow = document.getElementById("buyNow");
+      const productTitle = document.getElementById("productTitle");
+
+      const originalUrl = normalizeInput(input.value);
+
+      resultCard.style.display = "none";
+      convertedLink = "";
+
+      if (!originalUrl) {
+        setMessage("Vui lòng dán link sản phẩm Shopee.", "error");
+        return;
+      }
+
+      if (!isValidShopeeUrl(originalUrl)) {
+        setMessage("Link không hợp lệ. Trang chỉ hỗ trợ link Shopee.", "error");
+        return;
+      }
+
+      convertedLink = createShopeeAffiliateLink(originalUrl);
+
+      buyNow.href = convertedLink;
+      productTitle.textContent = extractSimpleTitle(originalUrl);
+
+      resultCard.style.display = "block";
+      setMessage("Đã chuyển đổi xong. Bấm “Mua ngay” để mở Shopee.", "success");
+
+      resultCard.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    async function copyConvertedLink() {
+      if (!convertedLink) {
+        setMessage("Chưa có link để sao chép.", "error");
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(convertedLink);
+        setMessage("Đã sao chép link đã chuyển đổi.", "success");
+      } catch (e) {
+        setMessage("Trình duyệt không cho sao chép tự động. Hãy bấm Mua ngay hoặc copy thủ công.", "error");
+      }
+    }
+
+    async function pasteFromClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById("productUrl").value = text;
+        setMessage("Đã dán link từ clipboard.", "success");
+      } catch (e) {
+        setMessage("Trình duyệt không cho đọc clipboard. Hãy dán link thủ công bằng Ctrl + V.", "error");
+      }
+    }
+  </script>
+</body>
+</html>
